@@ -9,7 +9,7 @@
 namespace App\Services;
 
 use App\Services\Gateway\{
-    AopF2F, Codepay, DoiAMPay, PaymentWall, ChenPay, SPay, TrimePay, PAYJS, YftPay
+    AopF2F, Codepay, ChenPay, SPay, PAYJS, YftPay
 };
 
 class Payment
@@ -20,18 +20,12 @@ class Payment
         switch ($method) {
             case ('codepay'):
                 return new Codepay();
-            case ('doiampay'):
-                return new DoiAMPay();
-            case ('paymentwall'):
-                return new PaymentWall();
             case ('spay'):
                 return new SPay();
             case ('f2fpay'):
                 return new AopF2F();
             case ('chenAlipay'):
                 return new ChenPay();
-            case ('trimepay'):
-                return new TrimePay(Config::get('trimepay_secret'));
             case ('payjs'):
                 return new PAYJS(Config::get('payjs_key'));
             case ('yftpay'):
